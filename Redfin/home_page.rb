@@ -4,9 +4,6 @@ class HomePage
 
     def initialize
         @browser ||= Watir::Browser.new :chrome
-    end
-
-    def goto_homepage
         @browser.goto "https://www.redfin.com/"
     end
 
@@ -23,11 +20,6 @@ class HomePage
         rescue Watir::Wait::TimeoutError
             return "successful"
         end
-    end
-
-    def enter_search(city)
-        @browser.input(:data_rf_test_name => "search-box-input", :name => "searchInputBox").to_subtype.set(city)
-        @browser.button(:data_rf_test_name => "searchButton", :title => "Search").click
     end
 
 end
