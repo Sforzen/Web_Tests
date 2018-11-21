@@ -7,7 +7,6 @@ end
 
 When("I login to Redfin with Google Chrome") do
   @browser = HomePage.new
-  @browser.goto_homepage
   @my_login_status = @browser.sign_in(@username, @password)
   puts @my_login_status
    # Write code here that turns the phrase above into concrete actions
