@@ -1,4 +1,4 @@
-require_relative '../ZillowDeepSearch'
+require_relative '../../ZillowDeepSearch'
 
 describe 'ZProperty' do
     let(:property) { ZProperty.new }
