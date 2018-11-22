@@ -16,7 +16,10 @@ class ZProperty
             req.params['address'] = '13071 Rainbow St'
             req.params['citystatezip'] = "Garden Grove, CA"
         end
-        return { 'address' => resp.xpath('//street').text, 'city' => resp.xpath('//city').text, 'state' => resp.xpath('//state').text }
+        if resp.status.eql? 200
+            return { 'address' => resp.xpath('//street').text, 'city' => resp.xpath('//city').text, 'state' => resp.xpath('//state').text }
+        else
+            return "fail"
     end
 
 end
