@@ -1,7 +1,6 @@
-require "watir"
-require_relative "../../../home_page"
 require_relative "../../../estate_listing"
 
+# Capybara + Cucumber ###################################################
 Given("{string} and {string}") do |username, password|
     @username = username; @password = password
 end
@@ -23,7 +22,9 @@ end
 Then("I should be {string}") do |result|
     expect(@my_login_status).to eq(result)
 end
+#########################################################################
 
+# Cucumber + Watir + Page objects #######################################
 Given("I want {int} beds and {int} and at the max price of '$1M' in {string}") do |beds, baths, city|
     @estatepage = EstatePage.new
     current_page = @estatepage.enter_search(city)
@@ -45,3 +46,4 @@ end
 Then("I should be {string} and only see results based on my criteria") do |results|
     expect(@my_search_status).to eq(results)
 end
+#########################################################################
