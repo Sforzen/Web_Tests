@@ -7,9 +7,17 @@ Given("{string} and {string}") do |username, password|
 end
 
 When("I login to Redfin with Google Chrome") do
-    @homepage = HomePage.new
-    @my_login_status = @homepage.sign_in(@username, @password)
-    puts @my_login_status
+    visit 'https://www.redfin.com'
+    click_button("Log In")
+    click_button("Continue with Email")
+    fill_in('Email', :with => @username)
+    fill_in('Password', :with => @password)
+    click_button("Sign In")
+    if page.has_content?("Error")
+        @my_login_status = 'fail'
+    else
+        @my_login_status = 'successful'
+    end
 end
 
 Then("I should be {string}") do |result|
